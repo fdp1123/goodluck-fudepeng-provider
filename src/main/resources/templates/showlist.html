@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>查询</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:each="l : ${session.userLogin}">
+    欢迎<span th:text="${l.username}"></span>
+</div>
+<center>
+    <table border="1" style=" ">
+
+        <tr>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>头像</td>
+            <td>爱好</td>
+            <td>操作</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="a : ${all}">
+            <td th:text="${a.username}">用户名</td>
+            <td th:text="${a.pwd}">密码</td>
+            <td th:text="${a.age}">年龄</td>
+            <td th:text="${a.sex}">性别</td>
+            <td><img th:src="'/'+${a.photo}"/></td>
+            <td th:text="${a.hobby}">爱好</td>
+            <td>
+                <a href="#" th:href="@{findUserById(id=${a.id})}">
+                    <button>修改</button>
+                </a>
+            </td>
+            <td><a href="#" th:href="@{delete(id=${a.id})}">
+                <button>删除</button>
+            </a></td>
+        </tr>
+
+    </table>
+</center>
+</body>
+</html>

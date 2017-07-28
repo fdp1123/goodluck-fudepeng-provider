@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>修改</title>
+</head>
+<body>
+<center>
+    <form action="update.action" method="post" id="registerForm">
+        <div th:each="u : ${userById}">
+            <input type="hidden" name="id" th:value="${u.id}"/>
+            <input type="text" name="username" class="username" th:value="${u.username}"
+                   autocomplete="off"/><br/><br/>
+            <input type="password" name="pwd" class="password" th:value="${u.pwd}"
+                   oncontextmenu="return false" onpaste="return false"/><br/><br/>
+            <input type="radio" name="sex" value="男" class="style" th:value="${u.sex}"
+                   checked="checked"/>男<input
+                type="radio" name="sex" value="女"
+                class="style" style="margin-left: 100px"/>女<br/><br/>
+            请选择年龄:<select name="age" th:value="${u.age}">
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+        </select><br/><br/>
+            <input type="file" name="photo" th:value="${u.photo}"/><br/><br/>
+            <input type="text" th:value="${u.hobby}"/>
+            请选择爱好: <input type="checkbox" name="hobby" value="吃"/>吃
+            <input type="checkbox" name="hobby" value="喝" style="margin-left: 8px"/>喝
+            <input type="checkbox" name="hobby" value="学习" style="margin-left: 8px"/>学习
+            <input type="checkbox" name="hobby" value="乐" style="margin-left: 8px"/>乐
+        </div>
+        <div>
+            <input type="submit" value="保存" class="btn btn-primary"/>
+        </div>
+    </form>
+</center>
+</body>
+</html>
